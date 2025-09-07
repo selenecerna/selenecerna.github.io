@@ -5,20 +5,46 @@
   <style>
     :root{ --ink:#495057; --ink-strong:#2f3a45; --line:#e6e8eb; }
     body{ margin:0; font:16px/1.7 Inter, Arial; color:var(--ink); background:#fff; }
-    .wrap{ padding:28px 28px 40px; }
-    h1{ margin:0 0 8px; font-size:28px; color:var(--ink-strong); }
-    .sub{ color:#6c757d; margin:0 0 18px; }
+    .wrap{ padding:28px 28px 40px; max-width: 800px; margin: auto; }
+    h1{ margin:0 0 18px; font-size:28px; color:var(--ink-strong); }
     .card{
-      border:1px solid var(--line); border-radius:12px; padding:16px 18px; background:#fff;
+      border:1px solid var(--line); border-radius:12px; padding:20px; background:#fff;
+    }
+    .profile-pic{
+      display:block; max-width:180px; margin:0 auto 18px; border-radius:12px;
+      border:1px solid var(--line); box-shadow:0 4px 8px rgba(0,0,0,0.05);
+    }
+    .socials{
+      margin-top:18px; display:flex; gap:14px; justify-content:center;
+    }
+    .socials a{
+      display:inline-block; padding:8px 14px; border:1px solid var(--line);
+      border-radius:8px; color:var(--ink-strong); font-size:14px;
+      text-decoration:none; transition: all 0.2s ease;
+    }
+    .socials a:hover{
+      background:#f5f5f5; border-color:#d1d5db;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>About Me</h1>
-    <p class="sub">Postdoctoral Researcher in LECA - UGA.</p>
     <div class="card">
-      <p>Welcome!...</p>
+      <!-- Foto -->
+      <img src="img/in_construction.png" alt="Selene Cerna portrait" class="profile-pic">
+
+      <!-- Texto -->
+      <p>
+        Welcome! I am a Postdoctoral Researcher at Université Grenoble Alpes, working on biodiversity modelling using computer vision and remote sensing. I received my PhD in Computer Science from UBFC (France), MSc in Electrical Engineering from UNESP (Brazil), and BASc in Software Engineering from UTP (Peru). My research bridges AI, Biodiversity, and Remote Sensing.
+      </p>
+
+      <!-- Redes -->
+      <div class="socials">
+        <a href="https://scholar.google.com/citations?user=liwMMyUAAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/selene-cerna/" target="_blank">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Selene-Cerna" target="_blank">ResearchGate</a>
+      </div>
     </div>
   </div>
 </body>
