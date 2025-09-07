@@ -5,18 +5,30 @@
   <style>
     :root{ --ink:#495057; --ink-strong:#2f3a45; --line:#e6e8eb; }
     body{ margin:0; font:16px/1.7 Inter, Arial; color:var(--ink); background:#fff; }
-    .wrap{ padding:28px 28px 40px; max-width: 800px; margin: auto; }
+    .wrap{ padding:28px; max-width: 1000px; margin: auto; }
     h1{ margin:0 0 18px; font-size:28px; color:var(--ink-strong); }
-    .card{
-      border:1px solid var(--line); border-radius:12px; padding:20px; background:#fff;
-      text-align:center;
+    
+    /* Contenedor en dos columnas */
+    .about{
+      display: grid;
+      grid-template-columns: 1fr 300px; /* izquierda flexible, derecha fija */
+      gap: 32px;
+      align-items: start;
     }
+
+    .text{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .profile-pic{
-      display:block; max-width:320px; margin:0 auto 18px; border-radius:12px;
+      display:block; max-width:100%; border-radius:12px;
       border:1px solid var(--line); box-shadow:0 4px 8px rgba(0,0,0,0.05);
     }
+
     .socials{
-      margin-top:18px; display:flex; gap:18px; justify-content:center;
+      margin-top:18px; display:flex; gap:18px;
     }
     .socials a{
       display:inline-flex; align-items:center; justify-content:center;
@@ -29,41 +41,55 @@
       background:#f5f5f5; border-color:#d1d5db;
     }
     .socials svg{
-      width:20px; height:20px;
-      fill:currentColor;
+      width:20px; height:20px; fill:currentColor;
+    }
+
+    /* Responsive: una sola columna en pantallas pequeñas */
+    @media (max-width: 768px){
+      .about{
+        grid-template-columns: 1fr;
+      }
+      .profile-pic{
+        max-width:220px; margin:auto;
+      }
+      .socials{ justify-content:center; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>About Me</h1>
-    <!-- <div class="card"> -->
-      <!-- Foto -->
-      <img src="img/photo_paysage_3.jpeg" alt="Selene Cerna portrait" class="profile-pic">
+    <div class="about">
+      <!-- Columna izquierda: texto + redes -->
+      <div class="text">
+        <p>
+          Welcome! I am a Postdoctoral Researcher at Université Grenoble Alpes, working on biodiversity modelling using computer vision and remote sensing. I received my PhD in Computer Science from UBFC (France), MSc in Electrical Engineering from UNESP (Brazil), and BASc in Software Engineering from UTP (Peru). My research bridges AI, Biodiversity, and Remote Sensing.
+        </p>
 
-      <!-- Texto -->
-      <p>
-        Welcome! I am a Postdoctoral Researcher at Université Grenoble Alpes, working on biodiversity modelling using computer vision and remote sensing. I received my PhD in Computer Science from UBFC (France), MSc in Electrical Engineering from UNESP (Brazil), and BASc in Software Engineering from UTP (Peru). My research bridges AI, Biodiversity, and Remote Sensing.
-      </p>
+        <!-- Redes con iconos -->
+        <div class="socials">
+          <!-- Google Scholar -->
+          <a href="https://scholar.google.com/citations?user=liwMMyUAAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24"><path d="M12 2L1 9l11 7 9-5.727V19h2V9L12 2z"/></svg>
+          </a>
 
-      <!-- Redes con iconos -->
-      <div class="socials">
-        <!-- Google Scholar -->
-        <a href="https://scholar.google.com/citations?user=liwMMyUAAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
-          <svg viewBox="0 0 24 24"><path d="M12 2L1 9l11 7 9-5.727V19h2V9L12 2z"/></svg>
-        </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/selene-cerna-1baa55275/" target="_blank" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v15H0zM8 8h4.8v2.04h.07c.67-1.27 2.3-2.6 4.73-2.6C21.6 7.44 24 9.7 24 14.1V23H19v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V23H9V8z"/></svg>
+          </a>
 
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/selene-cerna-1baa55275/" target="_blank" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v15H0zM8 8h4.8v2.04h.07c.67-1.27 2.3-2.6 4.73-2.6C21.6 7.44 24 9.7 24 14.1V23H19v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V23H9V8z"/></svg>
-        </a>
-
-        <!-- ResearchGate -->
-        <a href="https://www.researchgate.net/profile/Selene-Cerna-Nahuis?ev=hdr_xprf" target="_blank" aria-label="ResearchGate">
-          <svg viewBox="0 0 24 24"><path d="M17.59 18.23c-1.07 0-1.73-.52-2.4-1.33l-.06-.07-.07.06a4.14 4.14 0 0 1-2.77 1.12h-2.1V15.3h2.1c.96 0 1.65-.59 1.65-1.43 0-.9-.74-1.44-1.82-1.44h-1.93v-2.7h4.5c2.35 0 3.67 1.22 3.67 3.25 0 1.31-.56 2.25-1.62 2.73.8.45 1.24 1.24 1.94 2.1l.13.17-.15.12c-.4.33-.86.46-1.21.46zM5 4.5h14v15H5z"/></svg>
-        </a>
+          <!-- ResearchGate -->
+          <a href="https://www.researchgate.net/profile/Selene-Cerna-Nahuis?ev=hdr_xprf" target="_blank" aria-label="ResearchGate">
+            <svg viewBox="0 0 24 24"><path d="M17.59 18.23c-1.07 0-1.73-.52-2.4-1.33l-.06-.07-.07.06a4.14 4.14 0 0 1-2.77 1.12h-2.1V15.3h2.1c.96 0 1.65-.59 1.65-1.43 0-.9-.74-1.44-1.82-1.44h-1.93v-2.7h4.5c2.35 0 3.67 1.22 3.67 3.25 0 1.31-.56 2.25-1.62 2.73.8.45 1.24 1.24 1.94 2.1l.13.17-.15.12c-.4.33-.86.46-1.21.46zM5 4.5h14v15H5z"/></svg>
+          </a>
+        </div>
       </div>
-    <!-- </div> -->
+
+      <!-- Columna derecha: foto -->
+      <div>
+        <img src="img/photo_paysage_3.jpeg" alt="Selene Cerna portrait" class="profile-pic">
+      </div>
+    </div>
   </div>
 </body>
 </html>
