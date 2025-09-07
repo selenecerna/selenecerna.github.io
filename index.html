@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Crimson+Text:wght@600&display=swap" rel="stylesheet">
-  
+
   <style>
     /* ===== Paleta en grises (sin negro) ===== */
     :root{
@@ -82,20 +82,36 @@
 <body>
 
 <header>
-  <nav>
-    <ul>
-      <li><a href="home.html" target="content">Home</a></li>
-      <li><a href="research.html" target="content">Research</a></li>
-      <li><a href="publications.html" target="content">Publications</a></li>
-      <li><a href="software.html" target="content">Software</a></li>
-      <li><a href="blog.html" target="content">Blog</a></li>
-      <li><a href="cv.html" target="content">CV</a></li>
-    </ul>
-  </nav>
+  <div class="nav-wrap">
+    <a class="brand" href="home.html" target="content">Selene Cerna</a>
+    <nav>
+      <ul id="menu">
+        <li><a href="home.html" target="content" class="active">Home</a></li>
+        <li><a href="research.html" target="content">Research</a></li>
+        <li><a href="publications.html" target="content">Publications</a></li>
+        <li><a href="software.html" target="content">Software</a></li>
+        <li><a href="blog.html" target="content">Blog</a></li>
+        <li><a href="cv.html" target="content">CV</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<!-- Content of files -->
-<iframe name="content" src="home.html"></iframe>
+<div class="content">
+  <!-- Contenido modular -->
+  <iframe name="content" src="home.html" title="Content"></iframe>
+</div>
+
+<script>
+  // Marca el link activo cuando haces clic
+  const menu = document.getElementById('menu');
+  menu.addEventListener('click', (e) => {
+    if(e.target.tagName === 'A'){
+      [...menu.querySelectorAll('a')].forEach(a => a.classList.remove('active'));
+      e.target.classList.add('active');
+    }
+  });
+</script>
 
 </body>
 </html>
